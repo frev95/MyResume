@@ -4,14 +4,14 @@ import React from 'react';
 
 import Nav from '../components/Nav.jsx';
 
-function Home() {
+function Page2() {
 
   return (
     <>
       <Nav />
-      <h1>Home</h1>    { /* contenu à modifier */ }
+      <h1>Page2</h1>    { /* contenu à modifier */ }
     </>
   )
 }
 
-export default Home
+export default Page2

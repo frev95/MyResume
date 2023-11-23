@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import appLogo from "../assets/logo.png";
+import appLogo from "../assets/logo.png";   // logo par défaut (à adapter)
 
 // A faire: ajouter une indication de la page où l'on se trouve
 
 const Nav = () => {
     return (
         <nav>
-            <Link to="/">
-                <img src={ appLogo } alt="" width="150" />
-                Nom de l'appli
-            </Link>
-            <ul className="nav">
+            <div className="nav-left">
+                <Link to="/">
+                    <img src={ appLogo } alt="Starter App" height="20" />
+                    Starter App
+                </Link>
+            </div>
+            <ul className="nav-right">
                 <li className="nav-item">
                     <Link to="/">Home</Link>
                 </li>
