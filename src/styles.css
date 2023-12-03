@@ -19,10 +19,6 @@
   --selHeight: 1.6rem;
   --footerHeight: 2.4rem;
   
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  
   color: var(--text1);
   background-color: var(--green3);
   
@@ -31,11 +27,37 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: Gputeks;   /* pour les titres */
+  src: url('./fonts/Gputeks-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: GputeksBold;   /* pour les titres */
+  src: url('./fonts/Gputeks-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Avenir;   /* pour le texte */
+  src: url('./fonts/Avenir-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: AvenirBlack;   /* pour le texte */
+  src: url('./fonts/Avenir-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: InterThin;   /* en complément */
+  src: url('./fonts/Inter-Thin.ttf') format('truetype');
+}
+
 body {
   margin: 0;
   width: 100%;      /* pour occuper toute la largeur de l'écran */
   height: 100vh;    /* pour occuper toute la hauteur de la fenêtre */
   min-width: 320px; /* à ajuster selon le rendu */
+  font-family: Avenir, sans-serif;
 }
 
 nav {   /* barre de navigation */
@@ -48,15 +70,17 @@ nav {   /* barre de navigation */
   width: 100%;
   height: var(--navHeight);
   top: 0;
+  font-family: GputeksBold, sans-serif;
 }
 
-.select {   /* sélecteur pour filtrer les projets en fonction des technos qu'ils utlisent */
+.select {   /* sélecteur pour filtrer les projets en fonction des technos qu'ils utilisent */
   position: fixed;
   display: grid;
   gap: 0;
   background-color: var(--green3);
   width: var(--selWidth);
   left: 0;
+  font-family: Gputeks, sans-serif;   /* ou GputeksBold ? */
 }
 
 footer {   /* pied de page */
@@ -69,6 +93,7 @@ footer {   /* pied de page */
   display: flex;
   justify-content: space-between;
   gap: 3rem;
+  font-family: Gputeks, sans-serif;
 }
 
 .coords, .rights {
@@ -103,20 +128,32 @@ main {   /* partie centrale avec l'image de fond */
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: GputeksBold, sans-serif;
+  font-size: 3.6em;
   color: var(--orange1);
 }
 
 h2 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  color: var(--orange2);
+  font-family: InterThin, sans-serif;
+  font-size: 3em;
+  color: var(--text2);
 }
 
 h3 {
-  font-size: 1.4em;
-  font-weight: lighter;
+  font-family: GputeksBold, sans-serif;
+  font-size: 2.6em;
+  color: var(--orange1);
+}
+
+h4 {
+  font-family: GputeksBold, sans-serif;
+  font-size: 1.8em;
+  color: var(--orange1);
+}
+
+h5 {
+  font-family: InterThin, sans-serif;
+  font-size: 1.6em;
   color: var(--text2);
 }
 
@@ -283,7 +320,7 @@ nav .item:hover::before {
 
 /* Aligner les coordonnées les unes sous les autres si largeur < 750px */
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 810px) {
   main {
     background: var(--orange0);   /* pour signaler le travail à finir */
   }
