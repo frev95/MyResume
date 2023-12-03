@@ -1,130 +1,232 @@
 :root {
+  --green1: rgb(79, 153, 133);  /* top left d'un inlay */
+  --green2: rgb(147,187,176);   /* couleur du footer */
+  --green3: rgb(201,206,199);   /* couleur de la navbar */
+  --green4: rgb(243, 255, 238); /* bottom right d'un inlay */
+  --text1: rgb(0, 0, 0);
+  --text2: rgb(255, 255, 255);
+  --orange0: rgb(255, 203, 112);
+  --orange1: rgb(255, 164, 8);
+  --orange2: rgb(255, 119, 0);
+  
+  --thumbnailSize: 5rem;
+  --thumbnailPadding: 0.7rem;
+  --inlaySize: 2px;
+  --hoverThickness: 5px;
+  --lineThickness: 1px;
+  --navHeight: calc(var(--thumbnailSize) / 2 - var(--thumbnailPadding));
+  --selWidth: 10rem;
+  --selHeight: 1.6rem;
+  --footerHeight: 2.4rem;
+  
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-
-  --navBackColor: #282828;
-  --linkColor: #e7e7e7;
-  --hiliteColor: #ffffff;
-  --activeColor: rgb(78, 161, 255);
+  
+  color: var(--text1);
+  background-color: var(--green3);
+  
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 body {
   margin: 0;
+  width: 100%;      /* pour occuper toute la largeur de l'écran */
+  height: 100vh;    /* pour occuper toute la hauteur de la fenêtre */
+  min-width: 320px; /* à ajuster selon le rendu */
+}
+
+nav {   /* barre de navigation */
+  position: fixed;
+  display: grid;
+  grid-template-columns: var(--thumbnailSize) 1fr 1fr 1fr; /* vignette (de taille fixe) + 3 éléments de taille variable en fonction de la largeur d'écran */
+  /*align-items: center;*/
+  gap: 0;
+  background: linear-gradient(to bottom, var(--green3), transparent);
+  width: 100%;
+  height: var(--navHeight);
+  top: 0;
+}
+
+.select {   /* sélecteur pour filtrer les projets en fonction des technos qu'ils utlisent */
+  position: fixed;
+  display: grid;
+  gap: 0;
+  background-color: var(--green3);
+  width: var(--selWidth);
+  left: 0;
+}
+
+footer {   /* pied de page */
+  position: fixed;
+  background: linear-gradient(to top, var(--green2), transparent);
+  color: var(--text2);
+  width: 100%;
+  height: var(--footerHeight);
+  bottom: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.coords, .rights {
+  height: var(--footerHeight);
+  padding-bottom: 1rem;
+  align-items: end;  /* texte calé en bas */
+  /* min-width: 7rem; */
+}
+
+.coords {
+  padding-left: 1rem;
+  text-align: start;  /* texte calé à gauche */
+}
+
+.rights {
+  padding-right: 1rem;
+  text-align: end;  /* texte calé à droite */
+}
+
+main {   /* partie centrale avec l'image de fond */
+  display: flex;
+  place-items: center center;
+  padding-top: var(--navHeight); /* hauteur de la navbar */
+  padding-bottom: var(--footerHeight); /* hauteur du footer */
+  height: calc(100vh - var(--navHeight) - var(--footerHeight));
+  overflow-y: auto; /* permet le défilement si le contenu dépasse la hauteur disponible */
+  overflow-x: hidden;
+  background-image: url("./assets/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--orange1);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+h2 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: var(--orange2);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+h3 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  color: var(--text2);
 }
 
+a {
+  text-decoration: none;   /* pour enlever le soulignage des liens */
+}
 
-nav {   /* balise <nav> */
+.inlay-effect {   /* donne un effet d'incrustation à l'élément auquel cette classe est appliquée (image par exemple) */
+  content: "";    /* pour pouvoir visualiser le dégradé */
+  background: linear-gradient(to bottom right, var(--green1), var(--green4));
+  padding: var(--inlaySize);
+  /* width: var(--thumbnailSize);    /* modifier à la taille souhaitée */
+  /* height: var(--thumbnailSize);   /* (par défaut: taille de la vignette) */
+}
+
+.round {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.thumbnail, .thumbnail2 {   /* vignette (photo de profil) */
+  position: fixed;
+  top: calc(var(--thumbnailPadding) - var(--inlaySize));
+  left: calc(var(--thumbnailPadding) - var(--inlaySize));
+  width: calc(var(--thumbnailSize) - 2 * var(--thumbnailPadding));
+  height: calc(var(--thumbnailSize) - 2 * var(--thumbnailPadding));
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.thumbnail {   /* cette vignette renvoie sur la page d'accueil (qui, dans le cas présent, n'est pas la page courante) */
+  cursor: pointer;  /* doigt: pour indiquer que l'élément est cliquable */
+}
+
+.thumbnail:hover {   /* survol de la vignette */
+  padding: 0;   /* pour cercler l'image-même et non pas l'inlay */
+  top: calc(var(--thumbnailPadding) - var(--hoverThickness));
+  left: calc(var(--thumbnailPadding) - var(--hoverThickness));
+  width: calc(var(--thumbnailSize) - 2 * var(--thumbnailPadding));
+  height: calc(var(--thumbnailSize) - 2 * var(--thumbnailPadding));
+  border: var(--hoverThickness) solid var(--orange1);
+}
+
+.initials {   /* initiales qui apparaissent après la transition sur la photo de profil */
+  position: fixed;
+  top: 0.2rem;
+  left: 0;
+  width: var(--thumbnailSize);
+  height: var(--thumbnailSize);
+  border-bottom-right-radius: 100% 50%;  /* détail esthétique au cas où une couleur de fond serait ajoutée */
+  /* background: linear-gradient(to bottom, var(--green3), transparent); */
+  color: var(--text2);
+  font-size: 2.2em;
+  font-weight: bolder;
+}
+
+.thumbnail2 {   /* cette vignette n'est pas cliquable (on est déjà dans la page d'accueil) */
+  z-index: 2;   /* elle cache les initiales avant son déplacement au centre de la page */
+}
+
+.item, .current {           /* élément de navigation ou de sélection */
+  position: relative;       /* en relation avec le :before en position absolue */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.65em;
-  border-bottom: 1px solid rgba(250, 250, 250, 0.2)   /* à adapter */
+  justify-content: center;  /* centrage horizontal */
+  align-items: center;      /* centrage vertical */
+  padding: 0.4rem 1rem;
 }
 
-.nav-left {   /* partie gauche de la navbar */
-  display: flex;
-  align-items: center;
-  color: var(--hiliteColor);
+.item {    
+  cursor: pointer;  /* doigt: pour indiquer que l'élément est cliquable */
+  background-color: var(--green3);
+  color: var(--text1);
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
 }
 
-.nav-left a {
-  text-decoration: none;   /* pour enlever le soulignage */
+.current {
+  cursor: default;  /* car il est inutile de cliquer l'élément courant */
+  background-color: var(--orange1);
+  color: var(--text2);
 }
 
-.nav-left img {
-  opacity: 0.8;  /* pour pouvoir éclaicir le logo au survol */
+.nav {
+  border-bottom: var(--lineThickness) solid var(--orange1); /* ligne de séparation entre le navigateur et le reste de la page */
+  height: var(--navHeight);
 }
 
-.nav-left img:hover {
-  opacity: 1;
+.sel {
+  border-right: var(--lineThickness) solid var(--orange1); /* ligne de séparation entre le sélecteur et le reste de la page */
+  width: var(--selWidth);
+  height: var(--selHeight);
 }
 
-.nav-right {   /* partie droite de la navbar */
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.nav-item a {
-  text-decoration: none;
-  position: relative;
-  transition: all 0.3s;
-}
-
-.nav-item a:hover {
-  color: var(--hiliteColor);
-  font-weight: bold;
-}
-
-.nav-item a:active {
-  color: var(--activeColor);
-}
-
-ul li .current {
-  color: #bb2205;
-}
-
-a::before {
+nav .item::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
-  bottom: -2px;
+  height: calc(var(--hoverThickness) - var(--lineThickness));
   left: 0;
-  background-color: #ffff37;
+  bottom: 0;  /* surlignage aligné avec le bas des items */
+  background-color: var(--orange1);
   visibility: hidden;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out;
@@ -138,11 +240,75 @@ a::before {
   -o-transform: scaleX(0);
 }
 
-a:hover::before {
+nav .item:hover::before {
   visibility: visible;
   transform: scaleX(1);
   -webkit-transform: scaleX(1);
   -moz-transform: scaleX(1);
   -ms-transform: scaleX(1);
   -o-transform: scaleX(1);
+}
+
+.select .item::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width:  calc(var(--hoverThickness) - var(--lineThickness));
+  top: 0;
+  right: 0;  /* surlignage aligné avec la droite des items */
+  background-color: var(--orange1);
+  visibility: hidden;
+  transform: scaleY(0);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -o-transform: scaleY(0);
+}
+
+.select .item:hover::before {
+  visibility: visible;
+  transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+  -moz-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  -o-transform: scaleY(1);
+}
+
+/* ================= AJUSTEMENTS EN FONCTION DE LA TAILLE DE FENETRE ================= */
+
+/* Aligner les coordonnées les unes sous les autres si largeur < 750px */
+
+@media screen and (max-width: 750px) {
+  main {
+    background: var(--orange0);   /* pour signaler le travail à finir */
+  }
+}
+
+
+
+
+
+/* ================= AJOUTS POUR FAIRE DES TESTS ================= */
+
+.question {
+  color: var(--text2);
+  margin-left: 20rem;
+}
+
+.photo{
+  opacity: 1;
+}
+
+.job1, job2, job3 {
+  display: inline;
+  opacity: 1;
+}
+
+.job4{
+  opacity: 1;
 }

@@ -1,16 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// ================ Point d'entrée de l'application ================ //
 
 import './styles.css';
-// + import des polices ?
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Import des composants utilisés
 import Home from './pages/Home.jsx';
-import Page2 from './pages/Page2.jsx';
-import Page3 from './pages/Page3.jsx';
-import Page4 from './pages/Page4.jsx';
+import Competences from './pages/Competences.jsx';
+import Portfolio from './pages/Portfolio.jsx';
+import Contact from './pages/Contact.jsx';
 
 // Création des routes vers les différentes pages définies dans la barre de navigation
 const router = createBrowserRouter([
@@ -19,16 +18,16 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/page2",
-    element: <Page2 />,
+    path: "/competences",
+    element: <Competences />,
   },
   {
-    path: "/page3",
-    element: <Page3 />,
+    path: "/portfolio",
+    element: <Portfolio />,
   },
   {
-    path: "/page4",
-    element: <Page4 />,
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
 
