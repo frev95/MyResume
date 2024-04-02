@@ -18,6 +18,8 @@
   --selWidth: 10rem;
   --selHeight: 1.6rem;
   --footerHeight: 2.4rem;
+
+  --cellWidth: 4px;
   
   color: var(--text1);
   background-color: var(--green3);
@@ -85,7 +87,7 @@ nav {   /* barre de navigation */
 
 footer {   /* pied de page */
   position: fixed;
-  background: linear-gradient(to top, var(--green2), transparent);
+  background: var(--green2);
   color: var(--text2);
   width: 100%;
   height: var(--footerHeight);
@@ -94,6 +96,14 @@ footer {   /* pied de page */
   justify-content: space-between;
   gap: 3rem;
   font-family: Gputeks, sans-serif;
+}
+
+.transition {
+  position: fixed;
+  background: linear-gradient(to top, var(--green2), transparent);
+  width: 100%;
+  height: 1.4rem;
+  bottom: var(--footerHeight);
 }
 
 .coords, .rights {
@@ -153,8 +163,8 @@ h4 {
 
 h5 {
   font-family: InterThin, sans-serif;
-  font-size: 1.6em;
-  color: var(--text2);
+  font-size: 0.8em;
+  color: var(--text1);
 }
 
 a {
@@ -348,4 +358,62 @@ nav .item:hover::before {
 
 .job4{
   opacity: 1;
+}
+
+.cellinlay {
+  border-radius: calc(var(--cellWidth) / 2 + var(--inlaySize));
+}
+
+.cell {
+  height: 26px;
+  width: var(--cellWidth);
+  border-radius: calc(var(--cellWidth) / 2);
+}
+
+.bento {
+  display: flex;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  background-color: rgba(220, 250, 220, 0.3);
+}
+
+.vflex {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 2rem;
+  margin-top: 10rem;
+}
+
+.hflex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-start;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.valign {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.halign {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  gap: 0rem;
+}
+
+.icon {
+  height: 30px;
+  object-fit: contain;
 }
