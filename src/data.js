@@ -2,19 +2,19 @@
 
 
 
-// ---------------- Liste des technos utilisées et niveaux de compétence attribués ---------------- //
+// -------------- Liste des technos utilisées et niveaux de compétence attribués (en %) -------------- //
 
-export const technos = [ { id: 1, name: "HTML", score: "7" },
-                         { id: 2, name: "CSS", score: "7" },
-                         { id: 3, name: "NPM/NodeJS", score: "6" },
-                         { id: 4, name: "JavaScript", score: "8" },
-                         { id: 5, name: "jQuery", score: "8" },
-                         { id: 6, name: "AJAX", score: "6" },
-                         { id: 7, name: "ReactJS", score: "8" },
-                         { id: 8, name: "Symfony" },
-                         { id: 9, name: "PHP" },
-                         { id: 10, name: "C/C++", score: "9" },
-                         { id: 11, name: "Swift/SwiftUI (iOS)", score: "7" } ];
+export const technos = [ { id: 1, name: "HTML", icon: "html", score: "80" },
+                         { id: 2, name: "CSS", icon: "css", score: "75" },
+                         { id: 3, name: "NodeJS", icon: "node", score: "65" },
+                         { id: 4, name: "JavaScript", icon: "js", score: "85" },
+                         { id: 5, name: "jQuery", icon: "jquery", score: "80" },
+                         { id: 6, name: "AsyncJS and XML", icon: "ajax", score: "55" },
+                         { id: 7, name: "ReactJS", icon: "react", score: "80" },
+                         { id: 8, name: "Symfony", icon: "symfony", score: "45" },
+                         { id: 9, name: "PHP", icon: "php", score: "50" },
+                         { id: 10, name: "C/C++", icon: "cpp", score: "90" },
+                         { id: 11, name: "Swift/SwiftUI (iOS)", icon: "swift", score: "75" } ];
 
 
 
